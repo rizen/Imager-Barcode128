@@ -13,12 +13,6 @@ cmp_ok($encoded, 'eq',
     "'1234 abcd' rendered as expected"
 );
 
-#cmp_deeply(
-#    $hex->ew_coords,
-#    [ [ 100, 136 ], [ 150, 50 ], [ 250, 50 ], [ 300, 136 ], [ 250, 223 ], [ 150, 223 ] ],
-#    'east-west coords'
-#);
-
 my @chars = Imager::Barcode128::_encodable('A',"1234 abcd");
 cmp_deeply(\@chars,[ '1', '2', '3', '4', ' ' ], 'code A');
 @chars = Imager::Barcode128::_encodable('B',"1234 abcd");

@@ -171,7 +171,7 @@ has height => (
     lazy        => 1,
     default     => sub {
         my $self = shift;
-        return $self->image->getheight;
+        return $self->has_image ? $self->image->getheight : 100;
     },
 );
 
@@ -184,10 +184,11 @@ Get or set the L<Imager> object. Defaults to a 100px tall image with a white bac
 has image => (
     is          => 'rw',
     lazy        => 1,
+    predicate   => 1,
     default     => sub {
         my $self = shift;
         my $x = length($self->_barcode) * $self->scale;
-        my $image = Imager->new(xsize => $x, ysize => 100);
+        my $image = Imager->new(xsize => $x, ysize => $self->height);
         $image->box(color => 'white', filled => 1);
         return $image;
     },
