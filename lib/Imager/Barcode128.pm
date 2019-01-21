@@ -61,7 +61,7 @@ Imager::Barcode128 - Create GS1-128 compliant bar codes using Imager
 
  my $barcode = Imager::Barcode128->new( text => 'My cool barcode' );
  $barcode->draw;
- $barcode->image->save(file => 'barcode.png');
+ $barcode->image->write(file => 'barcode.png');
 
 =head1 DESCRIPTION
 
